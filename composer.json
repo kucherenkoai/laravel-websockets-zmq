@@ -1,0 +1,30 @@
+{
+      "name": "kucherenkoai/laravel-websockets-zmq"
+    , "type": "library"
+    , "description": "PHP WebSocket library"
+    , "keywords": ["WebSockets", "Ratchet", "Sockets", "WebSocket", "Laravel","PHP"]
+    , "homepage": "https://github.com/kucherenkoai"
+    , "license": "MIT"
+    , "authors": [
+        {
+          "name": "Anton Kucherenko"
+        , "email": "a.kucherenko1991@gmail.com"
+        , "role": "Developer"
+        }
+    ]
+    , "support": {
+        "issues": "https://github.com/kucherenkoai"
+    }
+    ,"minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "WebSocketsZMQ\\": "src/"
+        }
+    }
+    , "require": {
+        "cboden/ratchet": "^0.4.3"
+    }
+    , "require-dev": {
+        "phpunit/phpunit": "~4.8"
+    }
+}
