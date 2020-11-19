@@ -1,7 +1,7 @@
 ## About Laravel WebSocketsZMQ
 It's WebSocket package that use ZMQ and Ratchet library.
 
-## Install WebSockets ZMQ with docker
+## Install WebSocketsZMQ with docker
 
 #### php-fpm
 
@@ -14,6 +14,8 @@ RUN apt-get update -yqq && \
     make && \
     make install
 ````
+
+And need add `extension=zmq.so` row to `php.ini` file.
 
 #### workspace
 
@@ -28,6 +30,8 @@ RUN apt-get update -yqq && \
 RUN apt-get update -yqq && \
     echo "extension=zmq.so" >> /etc/php/${LARADOCK_PHP_VERSION}/cli/php.ini
 ````
+
+## Laravel backend side:
 
 #### Composer
 
@@ -222,7 +226,7 @@ class NotificationController {
     {
         $users[]   = $request->getUser()->getId();
         $body      = $request->getBody();
-        $topicName = $request->getTopic();
+        $routeName = $request->getRouteName();
 
         $user = User::find($request->getUser()->getId());
         $userResource = new UserResource($user);
@@ -236,6 +240,28 @@ class NotificationController {
 
 #### Comment:
 Response file can use not only custom controller and in different places in your application.
+ 
+ 
+## Client side:
+
+````
+    var conn = new WebSocket('ws://localhost:8080?token=3');
+    conn.onopen = function(e) {
+        console.log("Connection established!");
+    };
+
+    conn.onmessage = function(e) {
+        console.log(e.data);
+    };
+
+    setTimeout(function () {
+        conn.send(JSON.stringify([1,'notifications']));
+    },2000);
+
+    setTimeout(function () {
+        conn.send(JSON.stringify([3,'notifications',{"name":"Bob","email":"testname@testmail.net"}]));
+    },3000)
+````
  
 ## License
 
