@@ -13,6 +13,14 @@ class Request implements RequestInterface {
     private TopicInterface $topic;
     private RequestMessageInterface $requestMessage;
 
+    public function getRouteName(): string
+    {
+        if($this->topic){
+            return $this->topic->getName();
+        }
+        return null;
+
+    }
     public function getTopic(): TopicInterface
     {
         return $this->topic;

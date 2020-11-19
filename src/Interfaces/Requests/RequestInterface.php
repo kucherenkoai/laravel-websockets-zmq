@@ -7,6 +7,8 @@ use WebSocketsZMQ\Interfaces\Entities\UserInterface;
 
 interface RequestInterface
 {
+    public function getRouteName(): string;
+
     public function getTopic(): TopicInterface;
 
     public function getUser(): UserInterface;

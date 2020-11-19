@@ -63,7 +63,7 @@ class Response {
         return $this;
     }
 
-    public function addData(array $data)
+    public function addData($data)
     {
         $this->data = $data;
         return $this;
