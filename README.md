@@ -255,10 +255,6 @@ Response file can use not only custom controller and in different places in your
     };
 
     setTimeout(function () {
-        conn.send(JSON.stringify([1,'notifications']));
-    },2000);
-
-    setTimeout(function () {
         conn.send(JSON.stringify([3,'notifications',{"name":"Bob","email":"testname@testmail.net"}]));
     },3000)
 ````
